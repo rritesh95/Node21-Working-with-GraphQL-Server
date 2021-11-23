@@ -1,0 +1,16 @@
+REST API is stateless, client-independent API for exchanging data.
+GraphQL is also stateless, client-independent API for exchanging data but with higher query flexibility.
+
+Places where we need only few information from document and it varies with different pages then with REST API we may have to create more and more endpoint OR add query parameters in endpoints. But with both this approach we will get issues also. 
+In first case we will endup creating lots and lots of endpoints and lots of updation will require.
+In second case our endpoint will become very complex and hard to understand.
+
+To solve above problem we can use GraphQL. It's kind of query language that is sent from client to server, then parsed at server and returned only required data to client. So it's almost like database query language.
+
+with GraphQL we will have ONE single endpoint (typical/graphql). Uses only POST request to put that query requst in to the body. Have server-side resolvers that analyses the request body fetches and prepare the data according to the request body and returns the data.
+
+npm install --save graphql //required for defining the schema for graphQL service(query, mutation, subscription)
+npm install --save express-graphql //install a server that parses incoming graphql requests
+
+
+for input validations till now we were using "express-validator" as a middleware but incase of graphql we have only one route and no other middlewares. We will use another third party package named "validator" which "express-validator" uses behind the scene. Now with GraphQL we will use it directly.
